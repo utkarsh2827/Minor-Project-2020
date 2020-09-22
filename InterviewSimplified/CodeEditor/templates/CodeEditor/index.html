@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="code">Code</label>
+        <textarea name="code"></textarea>
+        <label for="input">Input</label>
+        <input type = "text" name = "input_value">
+        <button type = "submit">Run</button>
+    </form>
+    {% if output%}
+        <h1>Output:</h1>
+        {{output}}
+    {% endif %}
+</body>
+</html>
