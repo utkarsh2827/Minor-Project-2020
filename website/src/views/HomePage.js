@@ -16,7 +16,7 @@ import styles from "../assets/jss/material-kit-react/views/components.js";
 
 const useStyles = makeStyles(styles);
 
-export default function Components(props) {
+export default function HomePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
