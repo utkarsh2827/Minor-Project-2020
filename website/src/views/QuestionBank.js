@@ -1,32 +1,53 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import classNames from "classnames";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Button from "@material-ui/core/Button"
 import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
-import Grid from '@material-ui/core/Grid';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import Search from '@material-ui/icons/Search';
+
 import styles from "../assets/jss/material-kit-react/views/components.js";
-
-
+import SearchBar from "material-ui-search-bar";
+import axios from "axios";
 const useStyles = makeStyles(styles);
-
+const fetchQuestions=(tags, setState)=>{
+    const config = {
+        headers:{
+            'Content-Type':'application/json',
+        }
+    }
+    axios.get('http://localhost:8000/api/questions',config)
+        .then(res=>{
+            const questions = res.data.questionList;
+            console.log(res.data);
+            setState({questions:questions});
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+}
+const generateList=(questions)=>{
+    return(
+        <div>
+            {questions.map((question)=>{
+                return(
+                    <div>
+                        {question.name}
+                    </div>
+                );
+            })}
+        </div>
+            
+    );
+}
 export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
-    // const [state, setState] = useState(false);
-    // useEffect(()=>{
-    //     CodeMirror.fromTextArea(document.getElementById("editor"),{
-    //         mode:"xml",
-    //         theme: "dark"
-    //     });
-    // });
+    const [{searchValue,questions},setState] = useState({searchValue:'',questions:[]});
+    useEffect(()=>{
+        fetchQuestions('',setState);
+    },[]);
     return(
         <div>
             
@@ -39,25 +60,17 @@ export default function EditorPage(props){
             
             <CssBaseline />
             <div className={classNames(classes.container)}>
-                <Grid container>
-                    <Grid item>
-                        <FormControl fullwidth>
-                            <OutlinedInput
-                                id="input-with-icon-adornment"
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                    <Search />
-                                    </InputAdornment>
-                                }
-                                placeholder="Search..."
-                            />
-                        </FormControl>
-                        <Button color="primary" size="large">Submit</Button>
-                    </Grid>
-                </Grid>
-                        
-            
-
+                <SearchBar
+                    onChange={() => console.log('onChange')}
+                    onRequestSearch={() => console.log('onRequestSearch')}
+                    style={{
+                      margin: '0 auto',
+                      maxWidth: 800
+                    }}
+                /> 
+            </div>
+            <div className = {classes.section}>
+                {generateList(questions)};
             </div>
         </div>
        
