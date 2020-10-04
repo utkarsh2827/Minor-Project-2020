@@ -1,0 +1,19 @@
+Given two numbers as stings s1 and s2 your task is to multiply them.
+Example 1:
+Input:
+
+s1 = 33
+s2 = 2
+Output: 66
+Example 2:
+Input:
+
+s1 = 11
+s2 = 23
+Output: 253
+Your Task:
+You are required to complete the function multiplyStrings() which takes two strings s1 and s2 as its only argument and returns their product as strings.
+Constraints:
+1 <= length of s1 and s2 <= 103
+Expected time complexity: O( n1 * n2 )
+Expected auxiliary space: O( n1 + n2 ) ; where n1 and n2 are sizes of strings s1 and s2 respectively.

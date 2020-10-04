@@ -1,0 +1,24 @@
+
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+Example :
+[1,1,2] have the following unique permutations:
+[1,1,2]
+[1,2,1]
+[2,1,1]
+
+
+
+NOTE : No 2 entries in the permutation sequence should be the same.
+
+
+Warning : DO NOT USE LIBRARY FUNCTION FOR GENERATING PERMUTATIONS.
+Example : next_permutations in C++ / itertools.permutations in python.
+If you do, we will disqualify your submission retroactively and give you penalty points.
+
+
+
+
+    
+
+
+

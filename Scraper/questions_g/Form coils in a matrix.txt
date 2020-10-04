@@ -1,0 +1,28 @@
+Given a positive integer n that represents dimensions of a 4n x 4n matrix with values from 1 to 4*n*4n filled from left to right and top to bottom. Your task is to form two coils from matrix and print the coils.
+Examples:
+Input  : n = 1;
+Output : Coil 1 : 10 6 2 3 4 8 12 16 
+         Coil 2 : 7 11 15 14 13 9 5 1
+Explanation : Matrix is 
+1  2  3  4 
+5  6  7  8 
+9  10 11 12 
+13 14 15 16
+
+Input:
+The first line of input contains an integer T denoting the no of test cases. Then T test cases follow. Each test case contains an integer n.
+
+Output:
+For each test case output two lines where line 1 contains the space separated values of the coil1 and line 2 contains space separated values of the coil2. The coil 1 is the coil whose starting element is the greatest.
+
+Constraints:
+1<=T<=10
+1<=n<=20
+
+Example:
+Input:
+1
+1
+Output:
+10 6 2 3 4 8 12 16
+7 11 15 14 13 9 5 1

@@ -1,0 +1,12 @@
+
+Problem DescriptionGiven an array A of integers, find the maximum of j - i subjected to the constraint of A[i] <= A[j].Input FormatFirst and only argument is an integer array A.Output FormatReturn an integer denoting the maximum value of j - i;Example InputInput 1:
+ A = [3, 5, 4, 2]Example OutputOutput 1:
+ 2Example ExplanationExplanation 1:
+ Maximum value occurs for pair (3, 4).
+
+
+
+    
+
+
+

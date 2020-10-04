@@ -1,0 +1,19 @@
+Given a range L to R, the task is to find the highest occurring digit in prime numbers which lie between L and R (both inclusive). If multiple digits have same highest frequency print the largest of them. If no prime number occurs between L and R, output -1.
+Input:
+The first line of input contains T denoting number of test cases. The only line of each test case contains two integers L and R, denoting the range.
+Output:
+For each test case output a single line containing the answer.
+Constraints:
+1<= T <= 5000
+2<= L<=R <= 10^6
+R-L<=10^4
+Example:
+Input:
+2
+2 10
+2 20
+Output:
+7
+1
+Explanation:
+Prime number between 2 and 20 are 2, 3, 5, 7, 11, 13, 17, 19. 1 occur maximum i.e 5 times among 0 to 9.

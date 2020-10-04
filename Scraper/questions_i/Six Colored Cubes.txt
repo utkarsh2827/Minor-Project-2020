@@ -1,0 +1,11 @@
+
+You have a normal six sided cube. 
+I give you six different colors that you can paint each side of the cube with ( one color to each side ). 
+How many different cubes can you make?
+
+NOTE: Different means that the cubes can not be rotated so that they look the same. This is important! If you give me two cubes and I can rotate them so that they appear identical in color, they are the same cube.
+
+
+Answer is a integer.  Just put the number without any decimal places if its an integer. If the answer is Infinity, output Infinity.
+Feel free to get in touch with us if you have any questions
+

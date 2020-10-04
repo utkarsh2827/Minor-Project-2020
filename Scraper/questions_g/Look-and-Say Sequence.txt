@@ -1,0 +1,28 @@
+Given a pattern as below and an integer n your task is to decode it and print nth row of it. The pattern follows as :
+1
+11
+21
+1211
+111221
+............
+
+Input:
+The first line of input is the number of test cases .  Then T test cases follow . The first line of each test case is an integer N.
+
+Output:
+For each test case print the required nth row of the pattern.
+Expected Time Complexity : O(N2)
+Expected Auxilliary Space : O(1)
+
+Constraints:
+1<=T<=20
+1<=N<=20
+
+Example:
+Input:
+2
+2
+3
+Output:
+11
+21

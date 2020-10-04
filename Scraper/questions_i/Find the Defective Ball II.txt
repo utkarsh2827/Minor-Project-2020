@@ -1,0 +1,6 @@
+
+You have 8 balls all look identical (in shape, color etc.). All of them have same weight except one defective ball which is heavier than others. You can use a two sided balance system (not the electronic one). Find the minimum no. of measures required to separate the defective ball and the way you separate it.
+
+Answer is a integer.  Just put the number without any decimal places if its an integer. If the answer is Infinity, output Infinity.
+Feel free to get in touch with us if you have any questions
+

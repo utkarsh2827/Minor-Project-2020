@@ -1,0 +1,21 @@
+
+Problem DescriptionGiven a string A, find the common palindromic sequence ( A sequence which does not need to be contiguous and is a pallindrome), which is common in itself.
+You need to return the length of longest palindromic subsequence in A.
+NOTE:
+Your code will be run on multiple test cases (<=10). Try to come up with an optimised solution.Problem Constraints 1 <= |A| <= 1005Input FormatFirst and only argument is an string A.Output FormatReturn a integer denoting the length of longest palindromic subsequence in A.Example InputInput 1:
+
+ A = "bebeeed"
+Example OutputOutput 1:
+
+ 4
+Example ExplanationExplanation 1:
+
+ The longest common pallindromic subsequence is "eeee", which has a length of 4
+
+
+
+
+    
+
+
+
