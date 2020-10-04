@@ -1,0 +1,21 @@
+You are at the side of a river. You are given a m litre jug and a n litre jug where 0 < m < n. Both the jugs are initially empty. The jugs don’t have markings to allow measuring smaller quantities. You have to use the jugs to measure d litres of water where d < n. Determine the minimum no of operations to be performed to obtain d litres of water in one of jug.
+The operations you can perform are:
+Empty a Jug
+Fill a Jug
+Pour water from one jug to the other until one of the jugs is either empty or full.
+Input:
+First line consists of T test cases. Only line of every test case consists of 3 spaced integers denoting m , n, and d respectively. 
+Output:
+Single line output, print the minimum number of operations.
+Constraints:
+1<=T<=100
+1<=N,D<=100
+1<=M<=N
+Example:
+Input:
+2
+8 56 46
+3 5 4
+Output:
+-1
+6

@@ -1,0 +1,5 @@
+Install external libraries in python using pip package
+
+1. pip install requests
+2. pip install bs4
+3. pip install lxml

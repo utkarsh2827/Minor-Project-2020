@@ -1,0 +1,36 @@
+
+Problem DescriptionGIven three prime numbers A, B and C and an integer D.
+You need to find the first(smallest) D integers which only have A, B, C or a combination of them as their prime factors.
+
+Input FormatFirst argument is an integer A.
+Second argument is an integer B.
+Third argument is an integer C.
+Fourth argument is an integer D.
+
+Output FormatReturn an array of size D denoting the first smallest D integers which only have A, B, C or a combination of them as their prime factors.
+NOTE: You need to return the array sorted in ascending order.
+
+Example InputInput 1:
+ A = 2
+ B = 3
+ C = 5
+ D = 5
+
+
+Example OutputOutput 1:
+ [2, 3, 4, 5, 6]
+
+
+Example ExplanationExplanation 1:
+ 4 = A * A i.e ( 2 * 2 ) 
+ 6 = A * B i.e ( 2 * 3 )
+
+
+
+
+
+
+    
+
+
+

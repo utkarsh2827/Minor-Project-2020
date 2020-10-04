@@ -1,0 +1,21 @@
+Given three strings A, B and C your task is to complete the function isInterleave which returns true if C is an interleaving of A and B else returns false. C is said to be interleaving A and B, if it contains all characters of A and B and order of all characters in individual strings is preserved.
+Example 1:
+Input:
+A = YX, B = X, C = XXY
+Output: 0
+Explanation: XXY is not interleaving
+of YX and X
+
+Example 2:
+Input:
+A = XY, B = X, C = XXY
+Output: 1
+Explanation: XXY is interleaving of
+XY and X.
+Your Task:
+Complete the function isInterleave() which takes three strings A, B and C as input and returns true if C is an interleaving of A and B else returns false. (1 is printed by the driver code if the returned value is true, otherwise 0.)
+Expected Time Complexity: O(N * M)
+Expected Auxiliary Space: O(N * M)
+here, N = length of A, and M = length of B
+Constraints:
+1<=length of A, B, C <=100

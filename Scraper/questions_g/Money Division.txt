@@ -1,0 +1,22 @@
+Given an array where each element is the money a person have and there is only Rs. 3 note. We need to check whether it is possible to divide the money equally among all the persons or not. If it is possible then find Minimum number of transactions needed.
+Input:
+The first line of input consists of an integer T denoting the number of test cases Each test case contains an integer N denoting the size of the array. Then in the next line are N space separated elements of the array.
+Output: 
+For each case in a new line print the minimum number of transactions if it is possible to divide the money else print "-1" without quotes.
+Constraints:
+1<=T<=500
+1<=N<=1000
+1<=elements of array <=10^6
+Example:
+Input:
+2
+3
+5 8 11â€‹
+4
+1 2 3 4
+Output:
+1
+-1
+Explanation:
+In first example third person will give a 3 rs note to first person so that all will have same amount of money.
+In second example it is not possible to divide the money.

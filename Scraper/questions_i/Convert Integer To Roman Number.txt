@@ -1,0 +1,35 @@
+
+Write a bash script to convert a given integer to its corresponding roman number.
+For simplicity sake, you may assume:
+
+input contains only one integer in each line
+Every integer is in the range of [1, 4999] inclusive of 1 and 4999.
+
+Example:
+Assume that input has the following content:
+1
+2
+3
+4
+5
+
+
+Your script should output the following:
+I
+II
+III
+IV
+V
+
+
+Note:
+
+Check out the Online Converter if you have any doubts.
+
+
+
+
+    
+
+
+

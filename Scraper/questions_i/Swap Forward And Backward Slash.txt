@@ -1,0 +1,22 @@
+
+Write a bash script to replace all the occurrences of / with \ and \ with / in a text file named input.
+For simplicity sake, you may assume:
+
+input contains only either forward slash / or backward slash \
+
+Example:
+Assume that input has the following content:
+\\//
+
+
+Your script should output the following:
+//\\
+
+
+
+
+
+    
+
+
+

@@ -1,0 +1,23 @@
+
+Problem DescriptionGiven two strings A and B. Find the longest common sequence ( A sequence which does not need to be contiguous), which is common in both the strings.
+You need to return the length of such longest common subsequence.
+Problem Constraints1 <= |A|, |B| <= 1005Input FormatFirst argument is an string A.
+Second argument is an string B.
+Output FormatReturn the length of such longest common subsequence between string A and string B.Example InputInput 1:
+ A = "abbcdgf"
+ B = "bbadcgf"
+
+Example OutputOutput 1:
+ 5
+
+Example ExplanationExplanation 1:
+ The longest common subsequence is "bbcgf", which has a length of 5
+
+
+
+
+
+    
+
+
+

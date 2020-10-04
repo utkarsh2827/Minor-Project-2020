@@ -1,0 +1,20 @@
+ Given the coordinates of the end points of two line segments and you have to check if they intersect or not.
+Input: 
+The first line of input contains a single integer T denoting the number of test cases.Then T test cases follow. Each test case consists of 2 lines.The first line consists of 4 integers: x1, y1, x2, y2 where (x1,y1)
+and (x2,y2) are the end points of the first line segment.The second line consists of 4 integers: x3, y3, x4, y4 where (x3,y3) and (x4,y4) are the end points of the second line segment.
+Output:
+Corresponding to each test case, in a new line, print 1 if the line segments intersect, otherwise print 0.
+Constraints:
+1 ≤ T ≤ 300
+-106 ≤ xi,yi ≤ 106  
+ 1 <= i <= 4
+Example:
+Input:
+2
+1 1 10 1
+1 2 10 2
+10 0 0 10
+0 0 10 10
+Output:
+0
+1
