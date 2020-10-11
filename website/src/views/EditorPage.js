@@ -10,6 +10,7 @@ import HeaderLinks from "../components/Header/HeaderLinks.js";
 // import Grid from '@material-ui/core/Grid';
 // import ReactHtmlParser from 'react-html-parser'; 
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import {UnControlled as CodeMirror} from "react-codemirror2";
 import styles from "../assets/jss/material-kit-react/views/components.js";
@@ -39,7 +40,7 @@ export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
     const [{question}, setState] = useState({question:''});
-    const id = 4;
+    const {id} = useParams();
     useEffect(()=>{
         fetchQuestion(id ,setState);
     },[]);

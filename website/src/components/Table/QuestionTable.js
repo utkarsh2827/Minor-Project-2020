@@ -15,6 +15,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import Link from '@material-ui/core/Link';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -147,7 +148,7 @@ export default function QuestionTable(props) {
           ).map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+              <Link href={"/editor/"+row.id} color="inherit">{row.name}</Link>
               </StyledTableCell>
               <StyledTableCell style={{ width: 500 }} align="right">
                 {row.tags.join(", ")}
