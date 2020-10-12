@@ -4,8 +4,16 @@ from django.http import JsonResponse, FileResponse
 import os
 from django.conf import settings
 # Create your views here.
+def filter_questions(query):
+    questions = Questions.objects.filter(name__startswith=query)
+    return questions
+
+
 def get_questions_list(request):
+    query = request.GET.get('query',None)
     questions = Questions.objects.all()
+    if query:
+        questions = filter_questions(query)
     l = []
     for x in questions:
         l.append({"id":x.id,"name":x.name,"tags":list(x.tags.names())})

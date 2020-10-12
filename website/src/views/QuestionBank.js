@@ -11,30 +11,31 @@ import styles from "../assets/jss/material-kit-react/views/components.js";
 import SearchBar from "material-ui-search-bar";
 import axios from "axios";
 const useStyles = makeStyles(styles);
-const fetchQuestions=(tags, setState)=>{
+const fetchQuestions=(searchValue, setState)=>{
     const config = {
         headers:{
             'Content-Type':'application/json',
         }
     }
-    axios.get('http://localhost:8000/api/questions',config)
+    const url = 'http://localhost:8000/api/questions/?query='+searchValue;
+    axios.get(url,config)
         .then(res=>{
             const questions = res.data.questionList;
             console.log(res.data);
-            setState({questions:questions});
+            setState(questions);
         })
         .catch(err=>{
             console.log(err);
         })
 }
-
 export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
-    const [{searchValue,questions},setState] = useState({searchValue:'',questions:[]});
+    const [questions,setQuestions] = useState([]);
     useEffect(()=>{
-        fetchQuestions('',setState);
+        fetchQuestions('',setQuestions);
     },[]);
+    const [searchValue, setState] = useState('');
     return(
         <div>
             
@@ -48,8 +49,9 @@ export default function EditorPage(props){
             <CssBaseline />
             <div className={classNames(classes.container)}>
                 <SearchBar
-                    onChange={() => console.log('onChange')}
-                    onRequestSearch={() => console.log('onRequestSearch')}
+                    value = {searchValue}
+                    onChange={(newValue) => setState(newValue)}
+                    onRequestSearch={()=>fetchQuestions(searchValue,setQuestions)}
                     style={{
                       margin: '0 auto',
                       maxWidth: 800
