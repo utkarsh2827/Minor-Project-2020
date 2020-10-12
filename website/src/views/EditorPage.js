@@ -9,7 +9,8 @@ import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 // import Grid from '@material-ui/core/Grid';
 // import ReactHtmlParser from 'react-html-parser'; 
-// import axios from "axios";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import {UnControlled as CodeMirror} from "react-codemirror2";
 import styles from "../assets/jss/material-kit-react/views/components.js";
@@ -19,30 +20,30 @@ require('codemirror/mode/python/python');
 require('codemirror/mode/clike/clike')
 require('codemirror/mode/javascript/javascript');
 const useStyles = makeStyles(styles);
-// const fetchQuestion = (id,setState)=>{
-//     const config = {
-//         headers:{
-//             'Content-Type':'application/json',
-//         }
-//     }
-//     axios.get('http://localhost:8000/api/question/?id='+id,config)
-//         .then(res=>{
-//             const question = res.data.questionText;
-//             console.log(res.data);
-//             setState({question:question});
-//         })
-//         .catch(err=>{
-//             console.log(err);
-//         })
-// }
+const fetchQuestion = (id,setState)=>{
+    const config = {
+        headers:{
+            'Content-Type':'application/json',
+        }
+    }
+    axios.get('http://localhost:8000/api/question/?id='+id,config)
+        .then(res=>{
+            const q = res.data;
+            console.log(res.data);
+            setState({question:q});
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+}
 export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
-    // const [{question}, setState] = useState({question:''});
-    // const id = 1;
-    // useEffect(()=>{
-    //     fetchQuestion(id ,setState);
-    // },[]);
+    const [{question}, setState] = useState({question:''});
+    const {id} = useParams();
+    useEffect(()=>{
+        fetchQuestion(id ,setState);
+    },[]);
     return(
         <div>
             
@@ -60,7 +61,9 @@ export default function EditorPage(props){
                         Problem Statement
                     </Typography>
                     <section style={{fixed:true}}>
-                        <object style={{width:"100%"}} height={"500"} data="http://localhost:8000/static/QuestionBank/files/MaxSumContiguousSubarray.txt">Problem Statement</object>
+                        <pre style ={{"word-wrap":"break-word", "white-space":"pre-wrap"}}>
+                            {question}
+                        </pre>
                     </section>
 
                     <div>

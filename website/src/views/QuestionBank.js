@@ -6,7 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
-
+import QuestionTable from "../components/Table/QuestionTable";
 import styles from "../assets/jss/material-kit-react/views/components.js";
 import SearchBar from "material-ui-search-bar";
 import axios from "axios";
@@ -27,20 +27,7 @@ const fetchQuestions=(tags, setState)=>{
             console.log(err);
         })
 }
-const generateList=(questions)=>{
-    return(
-        <div>
-            {questions.map((question)=>{
-                return(
-                    <div>
-                        {question.name}
-                    </div>
-                );
-            })}
-        </div>
-            
-    );
-}
+
 export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
@@ -69,8 +56,9 @@ export default function EditorPage(props){
                     }}
                 /> 
             </div>
-            <div className = {classes.section}>
-                {generateList(questions)};
+            <CssBaseline />
+            <div className = {classes.container}>
+                <QuestionTable questions = {questions}></QuestionTable>
             </div>
         </div>
        
