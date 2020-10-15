@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 # Create your views here.
 def filter_questions(query):
-    questions = Questions.objects.filter(name__startswith=query)
+    questions = Questions.objects.filter(name__contains=query)
     return questions
 
 
