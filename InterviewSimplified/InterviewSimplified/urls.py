@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('CodeEditor.urls')),
     path('',include('QuestionBank.urls')),
+    path('',include('VideoAnalysis.urls')),
     path('api/user/login',views.LoginAPI.as_view(), name = "login"),
 ]

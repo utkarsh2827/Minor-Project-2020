@@ -4,6 +4,7 @@ import HomePage from "./views/HomePage";
 import LoginPage from "./views/LoginPage";
 import EditorPage from "./views/EditorPage";
 import QuestionBank from "./views/QuestionBank";
+import VideoPage from "./views/VideoPage";
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +15,8 @@ function App() {
         
         <Route path="/login-page" component={LoginPage} /> 
         <Route path="/editor/:id" component={EditorPage} /> 
-        <Route path="/questions" component={QuestionBank} /> 
+        <Route path="/questions" component={QuestionBank} />
+        <Route path="/video" component={VideoPage} /> 
         <Route path="/" component={HomePage} />
       </Switch>
   </BrowserRouter>

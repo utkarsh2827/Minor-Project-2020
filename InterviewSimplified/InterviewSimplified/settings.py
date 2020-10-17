@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'User.apps.UserConfig',
+    'VideoAnalysis.apps.VideoanalysisConfig',
     'CodeEditor.apps.CodeeditorConfig',
     'QuestionBank.apps.QuestionbankConfig',
     'django.contrib.admin',
