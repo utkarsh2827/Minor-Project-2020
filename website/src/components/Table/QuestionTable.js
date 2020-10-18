@@ -115,6 +115,7 @@ export default function QuestionTable(props) {
     const rows = props.questions;
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
+  let min = Math.min(rows.length,10)
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -134,10 +135,13 @@ export default function QuestionTable(props) {
         <TableHead>
             <StyledTableRow>
                 <StyledTableCell>
-                    Name
+                    <h5>Name</h5>
                 </StyledTableCell>
-                <StyledTableCell align="right">
-                    Company Tags
+                <StyledTableCell>
+                    <h5>Topic Tags</h5>
+                </StyledTableCell>
+                <StyledTableCell align = "right">
+                    <h5>Company Tags</h5>
                 </StyledTableCell>
             </StyledTableRow>
         </TableHead>
@@ -150,8 +154,11 @@ export default function QuestionTable(props) {
               <StyledTableCell component="th" scope="row">
               <Link href={"/editor/"+row.id} color="inherit">{row.name}</Link>
               </StyledTableCell>
-              <StyledTableCell style={{ width: 500 }} align="right">
-                {row.tags.join(", ")}
+              <StyledTableCell>
+                {row.topic_tags.map((tag)=>tag.name).join(', ')}
+              </StyledTableCell>
+              <StyledTableCell align = "right">
+                {row.company_tags.map((tag)=>tag.name).join(', ')}
               </StyledTableCell>
               
             </StyledTableRow>
