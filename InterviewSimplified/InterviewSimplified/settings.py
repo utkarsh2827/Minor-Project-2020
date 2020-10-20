@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'VideoAnalysis.apps.VideoanalysisConfig',
     'CodeEditor.apps.CodeeditorConfig',
     'QuestionBank.apps.QuestionbankConfig',
+    'InterviewExperience.apps.InterviewexperienceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

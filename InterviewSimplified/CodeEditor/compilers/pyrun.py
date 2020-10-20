@@ -7,4 +7,5 @@ def prun(code, input_txt):
     f = open("input.txt","w")
     f.write(input_txt)
     f.close()
-    os.system("python solution.py  &>output.txt")
+    os.system("python3.8 solution.py <input.txt &>output.txt")
+    os.system("rm solution.* input.*")

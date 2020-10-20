@@ -74,7 +74,6 @@ export default function EditorPage(props){
         axios.post('http://localhost:8000/execute/', formData, config)
             .then(res=>{
                 const output = res.data.output;
-                console.log(output)
                 setOutput(output); 
             })
             .catch(err=>{console.log(err);});
@@ -122,8 +121,9 @@ export default function EditorPage(props){
                                     onChange={(event)=>{setForm({...form, lang: event.target.value });}}
                                 >
                                     <MenuItem  value={'c'}>C</MenuItem>
-                                    <MenuItem  value={'cpp'}>C++</MenuItem>
+                                    <MenuItem  value={'c++src'}>C++</MenuItem>
                                     <MenuItem  value={'java'}>Java</MenuItem>
+                                    <MenuItem  value={'python'}>Python</MenuItem>
                                 </Select>
                             </FormControl>
                                 

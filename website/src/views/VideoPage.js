@@ -9,7 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 
-import VideoRecorder from 'react-video-recorder'
+import VideoRecorder from 'react-video-recorder';
 
 import styles from "../assets/jss/material-kit-react/views/components.js";
 import { Button, Typography } from '@material-ui/core';
