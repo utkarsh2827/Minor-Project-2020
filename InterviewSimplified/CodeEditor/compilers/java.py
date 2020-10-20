@@ -12,3 +12,4 @@ def jrun(code, input_txt):
     f.write(input_txt)
     f.close()
     status = os.system("java Solution <input.txt &>output.txt")
+    os.system("rm Solution.* input.txt")

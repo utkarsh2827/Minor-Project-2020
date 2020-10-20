@@ -12,3 +12,4 @@ def crun(code, input_txt):
     f.write(input_txt)
     f.close()
     status = os.system("./a.out <input.txt &>output.txt")
+    os.system("rm solution.* a.out input.txt")

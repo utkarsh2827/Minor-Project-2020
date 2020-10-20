@@ -5,6 +5,7 @@ import LoginPage from "./views/LoginPage";
 import EditorPage from "./views/EditorPage";
 import QuestionBank from "./views/QuestionBank";
 import VideoPage from "./views/VideoPage";
+import RoundForm from "./components/Forms/RoundForm";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/editor/:id" component={EditorPage} /> 
         <Route path="/questions" component={QuestionBank} />
         <Route path="/video" component={VideoPage} /> 
+        <Route path="/form" component={RoundForm} /> 
         <Route path="/" component={HomePage} />
       </Switch>
   </BrowserRouter>

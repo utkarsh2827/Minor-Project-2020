@@ -16,8 +16,7 @@ import ListIcon from '@material-ui/icons/List';
 import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 import PersonIcon from '@material-ui/icons/Person';
 
-// core components
-import Button from "@material-ui/core/Button";
+
 
 import styles from "../../assets/jss/material-kit-react/components/headerLinksStyle.js";
 

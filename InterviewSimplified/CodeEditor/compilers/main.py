@@ -7,7 +7,7 @@ def execute(code, lang="c", input_txt = ""):
     if lang == "c":
         crun(code, input_txt)
 
-    elif lang=="c++":
+    elif lang=="cpp":
         cpprun(code,input_txt)
 
     elif lang == "java":

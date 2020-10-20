@@ -37,11 +37,12 @@ const fetchTags = (setState)=>{
             'Content-Type':'application/json',
         }
     }
-   
+    let tags ={}
     const url = 'http://localhost:8000/api/tags';
     axios.get(url,config)
         .then(res=>{
-            let tags = res.data.company_tags;
+            tags.company_tags  = res.data.company_tags;
+            tags.topic_tags = res.data.topic_tags;
             setState(tags);
         })
         .catch(err=>{
@@ -54,7 +55,7 @@ const fetchQuestionsByTag=(searchValue, setState)=>{
             'Content-Type':'application/json',
         }
     }
-    const url = 'http://localhost:8000/api/questions-by-tags/?query='+searchValue;
+    const url = 'http://localhost:8000/api/questions-by-tags/'+searchValue.company+'/'+searchValue.topic;
     axios.get(url,config)
         .then(res=>{
             const questions = res.data.questionList;
@@ -68,15 +69,15 @@ export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
     const [questions,setQuestions] = useState([]);
-    const [tags, setTags] = useState([]);
+    const [tags, setTags] = useState({topic_tags:[], company_tags:[]});
     useEffect(()=>{
         fetchQuestions('',setQuestions);
         fetchTags(setTags);
     },[]);
     const [searchValue, setState] = useState('');
-    const [tagValue, setTag] = useState('');
+    const [tagValue, setTag] = useState({company:'', topic:''});
     const handleEnter = (e)=>{
-        if(e.keyCode== 13){
+        if(e.keyCode=== 13){
             fetchQuestionsByTag(tagValue, setQuestions);
         }
     }
@@ -100,25 +101,41 @@ export default function EditorPage(props){
                         style={{
                         margin: '0 auto',
                         spacing: 4,
-                        minWidth: 700
+                        minWidth: 550
                         }}
                     /> 
                 </FormControl>
                 &nbsp; &nbsp; &nbsp;&nbsp;
                 <FormControl>
                     <Autocomplete
-                        value={tagValue}
+                        value={tagValue.company}
                         onChange={(event, newInputValue) => {
-                          setTag(newInputValue);
+                          setTag({...tagValue, company: newInputValue});
                         }}
                         freeSolo= {true}
                         onKeyUp = {handleEnter}
-                        options={tags}
+                        options={tags.company_tags}
                         getOptionLabel={(option) => option}
-                        style={{ width: 350, height: 80 }}
-                        renderInput={(params) => <TextField {...params} label="Choose Tags" variant="outlined" />}
+                        style={{ width: 250, height: 80 }}
+                        renderInput={(params) => <TextField {...params} label="Company Tags" variant="outlined" />}
                     />
                 </FormControl>
+                &nbsp; &nbsp; &nbsp;&nbsp;
+                <FormControl>
+                    <Autocomplete
+                        value={tagValue.topic}
+                        onChange={(event, newInputValue) => {
+                          setTag({...tagValue, topic: newInputValue});
+                        }}
+                        freeSolo= {true}
+                        onKeyUp = {handleEnter}
+                        options={tags.topic_tags}
+                        getOptionLabel={(option) => option}
+                        style={{ width: 250, height: 80 }}
+                        renderInput={(params) => <TextField {...params} label="Topic Tags" variant="outlined" />}
+                    />
+                </FormControl>
+                
             </div>
             <CssBaseline />
             <div className = {classes.container}>

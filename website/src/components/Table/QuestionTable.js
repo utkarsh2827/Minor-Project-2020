@@ -115,7 +115,6 @@ export default function QuestionTable(props) {
     const rows = props.questions;
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
-  let min = Math.min(rows.length,10)
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
