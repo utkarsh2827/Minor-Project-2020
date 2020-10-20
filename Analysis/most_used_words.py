@@ -4,13 +4,21 @@ import operator as op
 from nltk.corpus import stopwords
 import plotly.graph_objs as go
 import plotly
+import wave
+import contextlib
 
 
 def audio_analysis():
 	text_dict={}
 	ans=[]
 	count=0
-	time= 2    #in minutes
+	
+	fname = 'temp_audio.wav'
+	with contextlib.closing(wave.open(fname,'r')) as f:
+	    frames = f.getnframes()
+	    rate = f.getframerate()
+	    time = frames / float(rate)
+	    
 
 	stop_list=list(stopwords.words("english"))
 
@@ -49,8 +57,8 @@ def audio_analysis():
 	html_string=plotly.io.to_html(fig)
 
 	ans.append(html_string)
-	#print(ans[0])
-	#print(ans[1])
+	# print(ans[0])
+	# print(ans[1])
 	return ans
 
 #audio_analysis()
