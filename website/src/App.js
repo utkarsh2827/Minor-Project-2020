@@ -4,6 +4,9 @@ import HomePage from "./views/HomePage";
 import LoginPage from "./views/LoginPage";
 import EditorPage from "./views/EditorPage";
 import QuestionBank from "./views/QuestionBank";
+import VideoPage from "./views/VideoPage";
+import IntExpForm from './views/IntExpForm';
+
 function App() {
   return (
     <BrowserRouter>
@@ -13,8 +16,10 @@ function App() {
         <Route path="/login-page" component={LoginPage} /> */}
         
         <Route path="/login-page" component={LoginPage} /> 
-        <Route path="/editor" component={EditorPage} /> 
-        <Route path="/questions" component={QuestionBank} /> 
+        <Route path="/editor/:id" component={EditorPage} /> 
+        <Route path="/questions" component={QuestionBank} />
+        <Route path="/video" component={VideoPage} /> 
+        <Route path="/form" component={IntExpForm} /> 
         <Route path="/" component={HomePage} />
       </Switch>
   </BrowserRouter>

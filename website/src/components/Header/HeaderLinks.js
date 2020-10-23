@@ -16,9 +16,7 @@ import ListIcon from '@material-ui/icons/List';
 import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 import PersonIcon from '@material-ui/icons/Person';
 
-// core components
-import CustomDropdown from "../CustomDropdown/CustomDropdown.js";
-import Button from "@material-ui/core/Button";
+
 
 import styles from "../../assets/jss/material-kit-react/components/headerLinksStyle.js";
 
@@ -29,33 +27,15 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        <CustomDropdown
-          noLiPadding
-          buttonText="Questions"
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent"
-          }}
-          buttonIcon={ListIcon}
-          dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
-              HR Questions
-            </Link>,
-            <Link to="/" className={classes.dropdownLink}>
-              Coding Questions
-            </Link>,
-          ]}
-        />
+          <Link to="/questions" className={classes.navLink}>
+            <ListIcon/>Questions
+          </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          href="/landing-page"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-          <OndemandVideoIcon/>Mock Interview
-        </Button>
+          <Link to="/video" className={classes.navLink}>
+            <OndemandVideoIcon/>Mock Interview
+          </Link>
+        
       </ListItem>
       <ListItem className={classes.listItem}>
           <Link to="/" className={classes.navLink}>

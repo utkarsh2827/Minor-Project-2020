@@ -32,8 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'User.apps.UserConfig',
+    'VideoAnalysis.apps.VideoanalysisConfig',
     'CodeEditor.apps.CodeeditorConfig',
     'QuestionBank.apps.QuestionbankConfig',
+    'InterviewExperience.apps.InterviewexperienceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,8 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'knox',
-    'taggit'
+    'knox'
 ]
 
 MIDDLEWARE = [
