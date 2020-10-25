@@ -29,11 +29,19 @@ export default function IntExpForm(props){
     const [form, setForm] = useState([[{question:'', link:'', answer:''}]]);
     const handleBasicChange = (event)=>{
         setBasicForm({...basicForm, [event.target.name]:event.target.value});
+        var values = [];
         if(form.length < basicForm.no_of_rounds){
-            var values = form;
+            values = form;
             for(var i = 0;i<(basicForm.no_of_rounds-form.length);i++){
                 values.push([{question:'', link:'', answer:''}]);
             }   
+            setForm(values);
+        }
+        if(form.length>basicForm.no_of_rounds){
+            values = form;
+            for(i = 0; i<form.length-basicForm.no_of_rounds;i++){
+                values.pop();
+            }
             setForm(values);
         }
     }

@@ -37,29 +37,35 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const fetchQuestion = (id,setState)=>{
-    const config = {
-        headers:{
-            'Content-Type':'application/json',
-        }
-    }
-    axios.get('http://localhost:8000/api/question/?id='+id,config)
-        .then(res=>{
-            const q = res.data;
-            console.log(res.data);
-            setState({question:q});
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-}
+
 export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
-    const [{question}, setState] = useState({question:''});
+    const [{questionText, questionName}, setState] = useState({questionText:'', questionName:''});
     const {id} = useParams();
-    const[form, setForm] = useState({lang:'', code:'', input_value:''})
+    const[form, setForm] = useState({lang:'c', code:'', input_value:''})
     const[output, setOutput] = useState('');
+
+
+    const fetchQuestion = ()=>{
+        const config = {
+            headers:{
+                'Content-Type':'application/json',
+            }
+        }
+        axios.get('http://localhost:8000/api/question/?id='+id,config)
+            .then(res=>{
+                const q = res.data.questionText;
+                const qn = res.data.questionName;
+                console.log(res.data);
+                setState({questionText:q, questionName:qn});
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    };
+
+
     const handleClick = ()=>{
         const config = {
             headers:{
@@ -77,9 +83,11 @@ export default function EditorPage(props){
                 setOutput(output); 
             })
             .catch(err=>{console.log(err);});
-    }
+    };
+
+
     useEffect(()=>{
-        fetchQuestion(id ,setState);
+        fetchQuestion();
     },[]);
     return(
         <div>
@@ -94,13 +102,11 @@ export default function EditorPage(props){
             <CssBaseline />
             <div>
                 <Container fullWidth  component = {Paper}>
+                    <h2>{questionName}</h2>
                     
-                    <Typography variant="h5" gutterBottom>
-                        Problem Statement
-                    </Typography>
                     <section style={{fixed:true}}>
                         <pre style ={{"word-wrap":"break-word", "white-space":"pre-wrap"}}>
-                            {question}
+                            {questionText}
                         </pre>
                     </section>
 

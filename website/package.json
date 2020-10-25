@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-video-recorder": "^3.17.1",
+    "react-wordcloud": "^1.2.7",
     "recordrtc": "^5.6.1",
     "styled-components": "^5.2.0"
   },

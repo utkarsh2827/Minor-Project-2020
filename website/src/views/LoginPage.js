@@ -10,7 +10,6 @@ import LockIcon from '@material-ui/icons/Lock';
 // core components
 import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
-// import Footer from "components/Footer/Footer.js";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Card from "../components/Card/Card.js";
@@ -54,42 +53,13 @@ export default function LoginPage(props) {
             <Grid item xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
+                  <CardHeader color="success" className={classes.cardHeader}>
                     <h3>Login</h3>
-                    <div className={classes.socialLine}>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-twitter"} />
-                      </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-facebook"} />
-                      </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-google-plus-g"} />
-                      </Button>
-                    </div>
                   </CardHeader>
                   <p className={classes.divider}></p>
                   <CardBody>
                     <CustomInput
-                      labelText="First Name..."
+                      labelText="Username"
                       id="first"
                       formControlProps={{
                         fullWidth: true
@@ -99,21 +69,6 @@ export default function LoginPage(props) {
                         endAdornment: (
                           <InputAdornment position="end">
                             <People className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Email..."
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "email",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         )
                       }}
@@ -137,7 +92,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button variant="contained" color="primary" size="lg">
                       Get started
                     </Button>
                   </CardFooter>
@@ -146,7 +101,6 @@ export default function LoginPage(props) {
             </Grid>
           </Grid>
         </div>
-        {/* <Footer whiteFont /> */}
       </div>
     </div>
   );

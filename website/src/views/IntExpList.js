@@ -1,0 +1,125 @@
+import React, {useState, useEffect} from 'react';
+import classNames from "classnames";
+import Header from "../components/Header/Header.js";
+import HeaderLinks from "../components/Header/HeaderLinks.js";
+import ExperienceList from '../components/List/ExperienceList';
+import {Grid, Button} from '@material-ui/core';
+import { Link } from "react-router-dom";
+import Parallax from '../components/Parallax/Parallax';
+import axios from 'axios';
+import { makeStyles } from "@material-ui/core/styles";
+import AddIcon from '@material-ui/icons/Add';
+import { container, title } from "../assets/jss/material-kit-react.js";
+
+const styles = {
+    container: {
+      zIndex: "12",
+      color: "#FFFFFF",
+      ...container
+    },
+    grid: {
+        marginRight: "-15px",
+        marginLeft: "-15px",
+        width: "auto"
+    },
+    griditem: {
+        position: "relative",
+        width: "100%",
+        minHeight: "1px",
+        paddingRight: "15px",
+        paddingLeft: "15px",
+        flexBasis: "auto"
+    },
+    title: {
+      ...title,
+      display: "inline-block",
+      position: "relative",
+      marginTop: "30px",
+      minHeight: "32px",
+      color: "#FFFFFF",
+      textDecoration: "none"
+    },
+    subtitle: {
+      fontSize: "1.313rem",
+      maxWidth: "500px",
+      margin: "10px auto 0"
+    },
+    main: {
+      background: "#FFFFFF",
+      position: "relative",
+      zIndex: "3"
+    },
+    mainRaised: {
+      margin: "-60px 30px 0px",
+      borderRadius: "6px",
+      boxShadow:
+        "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
+    }
+};
+const useStyles = makeStyles(styles);
+export default function IntExpList(props){
+    const [expList, setState] = useState([]);
+    const classes  = useStyles();
+    const fetchList = ()=>{
+        const config = {
+            headers:{
+                'Content-Type':'application/json',
+            }
+        };
+        axios.get('http://localhost:8000/api/list-exp/', config)
+        .then(res=>{
+            setState(res.data.list);
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+    };
+    useEffect(fetchList,[]);
+    const { ...rest } = props;
+    return(
+        <div>
+            <Header
+                color="transparent"
+                brand="Interviews Simplified"
+                rightLinks={<HeaderLinks />}
+                fixed
+                changeColorOnScroll={{
+                    height: 400,
+                    color: "white",
+                }}
+                {...rest}
+            />
+            <Parallax filter image={require("../assets/img/landing-bg.jpeg")}>
+                <div className={classes.container}>
+                    <Grid className={classes.grid} container>
+                        <Grid item className={classes.griditem} xs={12} sm={12} md={6}>
+                            <h1 className={classes.title}>Interview Experiences</h1>
+                            <h4 className={classes.subtitle}>
+                                Learn from your seniors{"'"} experience and
+                                ace your upcoming interview
+                            </h4>
+                            <br />
+                            <Button
+                                style= {{backgroundColor:"#f44336", color:"white"}}
+                                size="lg"
+                                variant="contained"
+                                href="/form"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                startIcon={<AddIcon />}
+                            >
+                                <Link to="/form" style= {{color:"white"}}>Add Experience</Link>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </div>
+            </Parallax>
+            <div className={classNames(classes.main, classes.mainRaised)}>
+                <div className={classes.container}>
+                    <ExperienceList data = {expList}/>
+                </div>
+            </div>
+        </div>
+        
+    );
+}

@@ -11,10 +11,58 @@ import Header from "../components/Header/Header.js";
 import Parallax from "../components/Parallax/Parallax.js";
 import Grid from '@material-ui/core/Grid';
 import HeaderLinks from "../components/Header/HeaderLinks.js";
-
+import { container, title } from "../assets/jss/material-kit-react.js";
 import styles from "../assets/jss/material-kit-react/views/components.js";
 
-const useStyles = makeStyles(styles);
+const styles2={
+  ...styles,
+  container: {
+    zIndex: "12",
+    color: "#FFFFFF",
+    ...container
+  },
+  grid: {
+      marginRight: "-15px",
+      marginLeft: "-15px",
+      width: "auto"
+  },
+  griditem: {
+      position: "relative",
+      width: "100%",
+      minHeight: "1px",
+      paddingRight: "15px",
+      paddingLeft: "15px",
+      flexBasis: "auto"
+  },
+  
+  title: {
+    ...title,
+    fontSize: "4.2rem",
+    fontWeight: "600",
+    display: "inline-block",
+    position: "relative",
+    color: "#FFFFFF"
+  },
+  subtitle: {
+    fontSize: "1.313rem",
+    maxWidth: "500px",
+    margin: "10px 0 0"
+  },
+  main: {
+    background: "#FFFFFF",
+    position: "relative",
+    zIndex: "3"
+  },
+  mainRaised: {
+    margin: "-60px 30px 0px",
+    borderRadius: "6px",
+    boxShadow:
+      "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
+  },
+  
+}
+
+const useStyles = makeStyles(styles2);
 
 export default function HomePage(props) {
   const classes = useStyles();
@@ -32,16 +80,17 @@ export default function HomePage(props) {
         }}
         {...rest}
       />
-      <Parallax image={require("../assets/img/bg4.jpg")}>
+      <Parallax filter image={require("../assets/img/home.jpg")}>
         <div className={classes.container}>
-          <Grid container>
-            <Grid item>
+          <Grid className={classes.grid} container>
+            <Grid item className={classes.griditem} xs={12} sm={12} md={4}>
               <div className={classes.brand}>
                 <h1 className={classes.title}>Interviews Simplified.</h1>
                 <h3 className={classes.subtitle}>
                   Prepare and Excel your Interviews with Us!
                 </h3>
               </div>
+                
             </Grid>
           </Grid>
         </div>

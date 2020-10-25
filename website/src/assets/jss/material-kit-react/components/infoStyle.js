@@ -7,13 +7,13 @@ import {
   roseColor,
   grayColor,
   title
-} from "assets/jss/material-kit-react.js";
+} from "../../material-kit-react.js";
 
 const infoStyle = {
   infoArea: {
-    maxWidth: "360px",
+    maxWidth: "500px",
     margin: "0 auto",
-    padding: "0px"
+    padding: "2px",
   },
   iconWrapper: {
     float: "left",

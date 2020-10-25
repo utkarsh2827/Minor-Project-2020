@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -10,7 +10,7 @@ import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 
 import VideoRecorder from 'react-video-recorder';
-
+import ReactWordcloud from 'react-wordcloud';
 import styles from "../assets/jss/material-kit-react/views/components.js";
 import { Button, Typography } from '@material-ui/core';
 import axios from "axios";
@@ -32,9 +32,31 @@ const postVideo= (videoBlob)=>{
     })
     .catch((err)=>console.log(err));
 }
+
+
 export default function VideoPage(props){
+    const [videoSummary, setSummary] = useState({words:[], pie_string:''});
     const classes = useStyles();
     const { ...rest } = props;
+    const getSummary = ()=>{
+        const config = {
+            headers:{
+                'Content-Type':'application/json',
+            }
+        }
+        axios.get("http://localhost:8000/generate/", config)
+        .then(res=>{
+            console.log(res.data);
+            let words_array  = res.data.wordcloud.map((obj)=>{
+                return {text:obj[0], value:obj[1]};
+            });
+            setSummary({...videoSummary, words:words_array, pie_string:res.data.pie_string});
+        })
+        .catch(err=>{console.log(err)})
+    };
+    useEffect(()=>{
+        getSummary();
+    },[]);
     return(
         <div>
             
@@ -58,7 +80,13 @@ export default function VideoPage(props){
                     </Grid>
                 </Grid>
             </div>
-            
+            <div className={classes.container}>
+                <iframe width={1000} height={500} srcDoc = {videoSummary.pie_string}></iframe>
+            </div>
+
+            <div className={classes.container}>
+                <ReactWordcloud words = {videoSummary.words}/>
+            </div>
         </div>
     );
 }

@@ -15,70 +15,59 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import axios from "axios";
 const useStyles = makeStyles(styles);
-const fetchQuestions=(searchValue, setState)=>{
-    const config = {
-        headers:{
-            'Content-Type':'application/json',
-        }
-    }
-    const url = 'http://localhost:8000/api/questions/?query='+searchValue;
-    axios.get(url,config)
-        .then(res=>{
-            const questions = res.data.questionList;
-            setState(questions);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-}
-const fetchTags = (setState)=>{
-    const config = {
-        headers:{
-            'Content-Type':'application/json',
-        }
-    }
-    let tags ={}
-    const url = 'http://localhost:8000/api/tags';
-    axios.get(url,config)
-        .then(res=>{
-            tags.company_tags  = res.data.company_tags;
-            tags.topic_tags = res.data.topic_tags;
-            setState(tags);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-}
-const fetchQuestionsByTag=(searchValue, setState)=>{
-    const config = {
-        headers:{
-            'Content-Type':'application/json',
-        }
-    }
-    const url = 'http://localhost:8000/api/questions-by-tags/'+searchValue.company+'/'+searchValue.topic;
-    axios.get(url,config)
-        .then(res=>{
-            const questions = res.data.questionList;
-            setState(questions);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-}
 export default function EditorPage(props){
     const classes = useStyles();
     const { ...rest } = props;
     const [questions,setQuestions] = useState([]);
     const [tags, setTags] = useState({topic_tags:[], company_tags:[]});
-    useEffect(()=>{
-        fetchQuestions('',setQuestions);
-        fetchTags(setTags);
-    },[]);
     const [searchValue, setState] = useState('');
     const [tagValue, setTag] = useState({company:'', topic:''});
+    const fetchQuestions = ()=>{
+        const config = {
+            headers:{
+                'Content-Type':'application/json',
+            },
+            params:{
+                'question':searchValue,
+                'company':tagValue.company,
+                'topic':tagValue.topic,
+            }
+        }
+        const url = 'http://localhost:8000/api/questions/?query='+searchValue;
+        axios.get(url,config)
+            .then(res=>{
+                const ques = res.data;
+                setQuestions(ques);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    }
+    const fetchTags = ()=>{
+        const config = {
+            headers:{
+                'Content-Type':'application/json',
+            }
+        }
+        let tags ={}
+        const url = 'http://localhost:8000/api/tags';
+        axios.get(url,config)
+            .then(res=>{
+                tags.company_tags  = res.data.company_tags;
+                tags.topic_tags = res.data.topic_tags;
+                setTags(tags);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    }
+    useEffect(()=>{
+        fetchQuestions();
+        fetchTags();
+    },[]);
     const handleEnter = (e)=>{
         if(e.keyCode=== 13){
-            fetchQuestionsByTag(tagValue, setQuestions);
+            fetchQuestions();
         }
     }
     return(
@@ -97,7 +86,7 @@ export default function EditorPage(props){
                     <SearchBar
                         value = {searchValue}
                         onChange={(newValue) => setState(newValue)}
-                        onRequestSearch={()=>fetchQuestions(searchValue,setQuestions)}
+                        onRequestSearch={()=>fetchQuestions()}
                         style={{
                         margin: '0 auto',
                         spacing: 4,
