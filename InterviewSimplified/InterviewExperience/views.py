@@ -22,8 +22,11 @@ def save_experience(request):
 
 
 def list_experience(request):
+    
     exps = Experience.objects.all()
-
+    query = request.GET.get('query',None)
+    if query:
+        exps = Experience.objects.filter(company_name__contains=query)
     l = []
     l = ExperienceSerializer(exps, many=True).data
     return JsonResponse({'list':l})

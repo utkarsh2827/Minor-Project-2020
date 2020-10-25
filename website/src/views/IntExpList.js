@@ -10,7 +10,7 @@ import axios from 'axios';
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from '@material-ui/icons/Add';
 import { container, title } from "../assets/jss/material-kit-react.js";
-
+import SearchBar from "../components/SearchBar";
 const styles = {
     container: {
       zIndex: "12",
@@ -54,19 +54,33 @@ const styles = {
       borderRadius: "6px",
       boxShadow:
         "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
+    },
+    section: {
+        padding: "70px 0",
+        textAlign: "center"
+    },
+    stitle: {
+        ...title,
+        marginBottom: "1rem",
+        marginTop: "30px",
+        minHeight: "32px",
+        textDecoration: "none"
+    },
+    sdescription: {
+        color: "#999"
     }
 };
 const useStyles = makeStyles(styles);
 export default function IntExpList(props){
     const [expList, setState] = useState([]);
     const classes  = useStyles();
-    const fetchList = ()=>{
+    const fetchList = (value)=>{
         const config = {
             headers:{
                 'Content-Type':'application/json',
             }
         };
-        axios.get('http://localhost:8000/api/list-exp/', config)
+        axios.get('http://localhost:8000/api/list-exp/?query='+value, config)
         .then(res=>{
             setState(res.data.list);
         })
@@ -74,7 +88,10 @@ export default function IntExpList(props){
             console.log(err);
         });
     };
-    useEffect(fetchList,[]);
+    useEffect(()=>{fetchList('')},[]);
+    const onSubmitSearch = (value)=>{
+        fetchList(value);
+    };
     const { ...rest } = props;
     return(
         <div>
@@ -116,7 +133,19 @@ export default function IntExpList(props){
             </Parallax>
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div className={classes.container}>
-                    <ExperienceList data = {expList}/>
+                    <div className={classes.section}>
+                        <Grid container display="flex" justify="center">
+                            <Grid item xs={12} sm={12} md={12}>
+                                <h2 className={classes.stitle}>Verified Interview Experiences</h2>
+                                <br/><br/>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={8}>
+                                <SearchBar onSubmit = {onSubmitSearch}/>
+                            </Grid>
+                        </Grid>
+                        <br/><br/><br/>
+                        <ExperienceList data = {expList}/>
+                    </div>
                 </div>
             </div>
         </div>
