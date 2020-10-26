@@ -45,20 +45,28 @@ def audio_analysis(audio_path):
 
 	ans.append(sort_list)
 
-	words=list(zip(*max_words))[0]
-	frequency=list(zip(*max_words))[1]
+	words=list(list(zip(*max_words))[0])
+	frequency=list(list(zip(*max_words))[1])
 
-	y_position=np.arange(len(words))
+	h={}
+    h['data']=frequency
+    result={}
+    result['labels']=words
+    result['datasets']=h
+    
+	ans.append(result)
+	# y_position=np.arange(len(words))
 
-	data = [go.Bar(x = words,y = frequency)]
-	fig = go.Figure(data=data, layout={'title':{'text': "FREQUENCIES OF THE MOST USED WORDS"}})
-	# fig.show()
 
-	html_string=plotly.io.to_html(fig)
+	# data = [go.Bar(x = words,y = frequency)]
+	# fig = go.Figure(data=data, layout={'title':{'text': "FREQUENCIES OF THE MOST USED WORDS"}})
+	# # fig.show()
 
-	ans.append(html_string)
-	# print(ans[0])
-	# print(ans[1])
+	# html_string=plotly.io.to_html(fig)
+
+	# ans.append(html_string)
+	# # print(ans[0])
+	# # print(ans[1])
 	return ans
 
 #audio_analysis()

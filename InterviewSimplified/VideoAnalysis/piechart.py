@@ -24,10 +24,16 @@ def piechart(video_path):
 
     labels = ['Angry','Confused','Fear','Happy','Sad','Surprise','Neutral']
     values = [angry, confused, fear, happy, sad, surprise, neutral]
+    h={}
+    h['data']=values
+    ans={}
+    ans['labels']=labels
+    ans['datasets']=h
+    return ans
 
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-    #fig.show()
-    html_string=plotly.io.to_html(fig)
-    return html_string
+    # fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    # #fig.show()
+    # html_string=plotly.io.to_html(fig)
+    # return html_string
 
 # piechart()
