@@ -7,6 +7,7 @@ import QuestionBank from "./views/QuestionBank";
 import VideoPage from "./views/VideoPage";
 import IntExpForm from './views/IntExpForm';
 import IntExpList from "./views/IntExpList";
+import IntExp from "./views/IntExp";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,9 @@ function App() {
         <Route path="/video" component={VideoPage} /> 
         <Route path="/form" component={IntExpForm} /> 
         <Route path="/experience-list" component={IntExpList} /> 
+        <Route path="/experience/:id" component={IntExp}/> 
         <Route path="/" component={HomePage} />
+        
       </Switch>
   </BrowserRouter>
   );

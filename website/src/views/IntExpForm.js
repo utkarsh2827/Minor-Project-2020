@@ -26,14 +26,14 @@ export default function IntExpForm(props){
         years_of_experience:0,
         additional_info:''
     });
-    const [form, setForm] = useState([[{question:'', link:'', answer:''}]]);
+    const [form, setForm] = useState([[{question:'', link:'NA', answer:'NA'}]]);
     const handleBasicChange = (event)=>{
         setBasicForm({...basicForm, [event.target.name]:event.target.value});
         var values = [];
         if(form.length < basicForm.no_of_rounds){
             values = form;
             for(var i = 0;i<(basicForm.no_of_rounds-form.length);i++){
-                values.push([{question:'', link:'', answer:''}]);
+                values.push([{question:'', link:'NA', answer:'NA'}]);
             }   
             setForm(values);
         }
@@ -53,7 +53,7 @@ export default function IntExpForm(props){
     const handleAddFields = (index) => {
         
         let fields = [...form];
-        fields[index].push({question:'', link:'', answer:''});
+        fields[index].push({question:'', link:'NA', answer:'NA'});
         setForm(fields);
         console.log(form);
     }
@@ -75,8 +75,10 @@ export default function IntExpForm(props){
         axios.post('http://localhost:8000/api/exp/',body, config )
         .then(res => {
             console.log(res.data);
+            window.location.replace("/experience-list");
         })
         .catch(err=>console.log(err));
+        
     }
 
     useEffect(()=>{console.log('Updating')},[basicForm]);

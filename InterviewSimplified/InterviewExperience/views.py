@@ -30,3 +30,7 @@ def list_experience(request):
     l = []
     l = ExperienceSerializer(exps, many=True).data
     return JsonResponse({'list':l})
+
+def get_experience(request):
+    exp = Experience.objects.get(pk=request.GET.get('id',2))
+    return JsonResponse(ExperienceSerializer(exp).data)

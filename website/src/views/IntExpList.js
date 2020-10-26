@@ -102,7 +102,7 @@ export default function IntExpList(props){
                 fixed
                 changeColorOnScroll={{
                     height: 400,
-                    color: "white",
+                    color: "dark",
                 }}
                 {...rest}
             />
@@ -113,7 +113,7 @@ export default function IntExpList(props){
                             <h1 className={classes.title}>Interview Experiences</h1>
                             <h4 className={classes.subtitle}>
                                 Learn from your seniors{"'"} experience and
-                                ace your upcoming interview
+                                ace your upcoming interviews.
                             </h4>
                             <br />
                             <Button
