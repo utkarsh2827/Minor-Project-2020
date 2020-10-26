@@ -16,6 +16,7 @@ import { Button, Typography } from '@material-ui/core';
 import axios from "axios";
 import { getSeekableBlob } from "recordrtc";
 
+import {Doughnut, HorizontalBar} from 'react-chartjs-2';
 
 const useStyles = makeStyles(styles);
 const postVideo= (videoBlob)=>{
@@ -81,9 +82,11 @@ export default function VideoPage(props){
                 </Grid>
             </div>
             <div className={classes.container}>
-                <iframe width={1000} height={500} srcDoc = {videoSummary.pie_string}></iframe>
+                <Doughnut data = {videoSummary.pie_string}/>
             </div>
-
+            <div className={classes.container}>
+                <HorizontalBar data = {videoSummary.barchart}/>
+            </div>
             <div className={classes.container}>
                 <ReactWordcloud words = {videoSummary.words}/>
             </div>
