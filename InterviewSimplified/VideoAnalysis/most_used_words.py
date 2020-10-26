@@ -52,7 +52,9 @@ def audio_analysis(audio_path):
 	h['data']=frequency
 	result={}
 	result['labels']=words
-	result['datasets']=h
+	lis=[]
+	lis.append(h)
+	result['datasets']=lis
     
 	ans.append(result)
 	# y_position=np.arange(len(words))

@@ -28,7 +28,9 @@ def piechart(video_path):
     h['data']=values
     ans={}
     ans['labels']=labels
-    ans['datasets']=h
+    lis=[]
+    lis.append(h)
+    ans['datasets']=lis
     return ans
 
     # fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
