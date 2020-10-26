@@ -49,10 +49,10 @@ def audio_analysis(audio_path):
 	frequency=list(list(zip(*max_words))[1])
 
 	h={}
-    h['data']=frequency
-    result={}
-    result['labels']=words
-    result['datasets']=h
+	h['data']=frequency
+	result={}
+	result['labels']=words
+	result['datasets']=h
     
 	ans.append(result)
 	# y_position=np.arange(len(words))
