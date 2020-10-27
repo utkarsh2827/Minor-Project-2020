@@ -26,6 +26,8 @@ def piechart(video_path):
     values = [angry, confused, fear, happy, sad, surprise, neutral]
     h={}
     h['data']=values
+    h['backgroundColor']=['#FF0000','#CC6600','#669900','#0066FF','#993366','#333300','#9999FF']
+    h['hoverBackgroundColor']=['#FF0000','#CC6600','#669900','#0066FF','#993366','#333300','#9999FF']
     ans={}
     ans['labels']=labels
     lis=[]

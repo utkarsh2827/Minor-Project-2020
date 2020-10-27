@@ -52,6 +52,8 @@ def audio_analysis(audio_path):
 	h['data']=frequency
 	result={}
 	result['labels']=words
+	h['backgroundColor']=['#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF']
+	h['hoverBackgroundColor']=['#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF','#3399FF']
 	lis=[]
 	lis.append(h)
 	result['datasets']=lis
