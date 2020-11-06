@@ -2,8 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np 
 import operator as op
 from nltk.corpus import stopwords
-import plotly.graph_objs as go
-import plotly
+
 import wave
 import contextlib
 
@@ -59,18 +58,6 @@ def audio_analysis(audio_path):
 	result['datasets']=lis
     
 	ans.append(result)
-	# y_position=np.arange(len(words))
-
-
-	# data = [go.Bar(x = words,y = frequency)]
-	# fig = go.Figure(data=data, layout={'title':{'text': "FREQUENCIES OF THE MOST USED WORDS"}})
-	# # fig.show()
-
-	# html_string=plotly.io.to_html(fig)
-
-	# ans.append(html_string)
-	# # print(ans[0])
-	# # print(ans[1])
 	return ans
 
 #audio_analysis()
