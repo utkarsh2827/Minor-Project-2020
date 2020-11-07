@@ -6,7 +6,7 @@ from django.conf import settings
 
 from knox.auth import TokenAuthentication
 
-from .models import *
+from .models import Analysis
 
 from moviepy.editor import *
 from .audio_to_text import *

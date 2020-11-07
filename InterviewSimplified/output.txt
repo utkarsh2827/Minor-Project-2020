@@ -1,4 +1,1 @@
-<<<<<<< HEAD
 hello world
-=======
->>>>>>> 25a5b6b11383ae480ba0b8da684f6b9b153d02d7
