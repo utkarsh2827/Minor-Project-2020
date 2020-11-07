@@ -1,5 +1,4 @@
 import speech_recognition as sr
-# Initialize recognizer class (for recognizing the speech)
 
 def generate_text(audio_path):
     r = sr.Recognizer()
@@ -9,7 +8,8 @@ def generate_text(audio_path):
 
     with sr.AudioFile(audio_path) as source: 
         audio_text = r.listen(source)
-        
+
+    text=''    
     # recoginize_() method will throw a request error if the API is unreachable, hence using exception handling
         try:
             # using google speech recognition
@@ -18,3 +18,4 @@ def generate_text(audio_path):
             file1.write(text)  
         except:
             print('Sorry.. run again...')
+    return text
