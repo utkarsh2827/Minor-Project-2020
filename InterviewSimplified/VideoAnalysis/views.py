@@ -41,12 +41,13 @@ class VideoProcessing(APIView):
         choice = int(request.POST['question-id'])
         res={}
         
-        generate_text('temp.wav')
+        text=generate_text('temp.wav')
         help1=audio_analysis('temp.wav')
         res['speaking_rate']=help1[0]
         res['wordcloud']=help1[1]
         res['barchart']=help1[2]
         res['pie_string']=piechart('c1.mp4')
+        res['text']=text
         res['question'] = questions[choice]['Question']
         res['sug_answer'] = questions[choice]['Answer']
         obj = Analysis(user = request.user, report = res)
