@@ -23,6 +23,7 @@ import styles from "../assets/jss/material-kit-react/views/loginPage.js";
 import image from "../assets/img/bg7.jpg";
 import {useAuth} from '../auth';
 import axios from 'axios';
+import Login from '../components/login/mainpage'
 
 
 
@@ -83,66 +84,7 @@ export default function LoginPage(props) {
         }}
       >
         <div className={classes.container}>
-          <Grid container justify="center">
-            <Grid item xs={12} sm={12} md={4}>
-              <Card className={classes[cardAnimaton]}>
-                <form className={classes.form}>
-                  <CardHeader color="success" className={classes.cardHeader}>
-                    <h3>Login</h3>
-                  </CardHeader>
-                  <p className={classes.divider}></p>
-                  <CardBody>
-                    <CustomInput
-                      labelText="Username"
-                      id="first"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "text",
-                        value: username,
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <People className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                        onChange:(event)=>{setUsername(event.target.value);},
-                      }}
-                    />
-                    <CustomInput
-                      labelText="Password"
-                      id="pass"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "password",
-                        value: password,
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <LockIcon className={classes.inputIconsColor}/>
-
-                          </InputAdornment>
-                        
-                        ),
-                        onChange:(event)=>{setPassword(event.target.value);},
-                        autoComplete: "off"
-                      }}
-                    />
-                  </CardBody>
-                  <CardFooter className={classes.cardFooter}>
-                    <Button variant="contained" color="primary" size="lg" onClick={handleClick}>
-                      Get started
-                    </Button>
-                    &nbsp;&nbsp;&nbsp;
-                    <Button variant="contained" color="primary" size="lg">
-                      <Link to="/signup" style= {{color:"white"}}>Sign Up</Link>
-                    </Button>
-                  </CardFooter>
-                </form>
-              </Card>
-            </Grid>
-          </Grid>
+        <Login/>
         </div>
       </div>
     </div>
