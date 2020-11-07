@@ -17,35 +17,35 @@ export class Register extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
+              <input type="text" name="username" placeholder="Username" />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" />
+              <input type="text" name="email" placeholder="Email" />
             </div>
             <div className="form-group">
               <label htmlFor="firstname">First Name</label>
-              <input type="text" name="firstname" placeholder="firstname" />
+              <input type="text" name="firstname" placeholder="First Name" />
             </div>
             <div className="form-group">
               <label htmlFor="lastname">Last Name</label>
-              <input type="text" name="lastname" placeholder="lastname" />
+              <input type="text" name="lastname" placeholder="Last Name" />
             </div>
             <div className="form-group">
               <label htmlFor="gender">Gender</label>
-              <input type="text" name="gender" placeholder="gender" />
+              <input type="text" name="gender" placeholder="Gender" />
             </div>
             <div className="form-group">
               <label htmlFor="branch">Branch</label>
-              <input type="text" name="branch" placeholder="branch" />
+              <input type="text" name="branch" placeholder="Branch" />
             </div>
             <div className="form-group">
               <label htmlFor="city">City</label>
-              <input type="text" name="city" placeholder="city" />
+              <input type="text" name="city" placeholder="City" />
             </div>
             <div className="form-group">
               <label htmlFor="cgpa">Cgpa</label>
-              <input type="text" name="cgpa" placeholder="cgpa" />
+              <input type="text" name="cgpa" placeholder="CGPA" />
             </div>
             <div className="form-group">
               <label htmlFor="work_experience">Work Experience</label>
