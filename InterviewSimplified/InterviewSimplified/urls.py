@@ -25,5 +25,7 @@ urlpatterns = [
     path('',include('VideoAnalysis.urls')),
     path('',include('InterviewExperience.urls')),
     path('api/user/login',views.LoginAPI.as_view(), name = "login"),
+    path('api/user/profile',views.ProfileAPI.as_view(), name = "profile"),
     path('logout/',knox_views.LogoutView.as_view(), name='knox_logout'),
+    path('api/user/register', views.register, name = 'register'),
 ]

@@ -22,3 +22,10 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    experience = models.ForeignKey(Experience, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)

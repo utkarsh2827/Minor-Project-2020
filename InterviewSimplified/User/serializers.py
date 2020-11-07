@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
+from .models import Profile
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -15,3 +15,9 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+
+class ProfileSerializer(serializers.ModelSerializer):
+    gender = serializers.CharField(source='get_gender_display')
+    class Meta:
+        model = Profile
+        exclude = ['user']

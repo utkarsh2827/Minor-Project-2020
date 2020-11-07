@@ -4,11 +4,11 @@ import faker from 'faker';
 const CommentDetail =(props) =>{
     return(
         <div className="comment">
-                <a href="/" className="avatar">
+                <a href="/profile" className="avatar">
                     <img alt="avatar" src={props.img}/>
                 </a>
                 <div className="content">
-                    <a href="/" className="author">
+                    <a href="/profile" className="author">
                     {props.author}
                     </a>
                     <div className="metadata">
