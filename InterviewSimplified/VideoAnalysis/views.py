@@ -1,7 +1,8 @@
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+
 
 from knox.auth import TokenAuthentication
 
@@ -14,6 +15,7 @@ from .piechart import *
 from .hr_questions import questions
 from random import randrange
 import json
+import os
 
 
 class VideoProcessing(APIView):
@@ -27,14 +29,14 @@ class VideoProcessing(APIView):
         return Response(dict(question = questions[choice]['Question'], id = choice))
 
     def post(self, request, format=None):
-        fileaddress = f"./VideoAnalysis/videos/temp.webm"
-        with open(fileaddress, "wb") as f:
-            for chunk in request.FILES['blob'].chunks():
-                f.write(chunk)
-        
-        video = VideoFileClip('./VideoAnalysis/videos/temp.webm')
+        fileaddress = os.path.join(settings.BASE_DIR, "temp.webm")
+        f = open(fileaddress, "wb+")
+        for chunk in request.FILES['blob'].chunks():
+            f.write(chunk)
+        f.close()
+        video = VideoFileClip(fileaddress)
         video.write_videofile('c1.mp4')
-        audio = AudioFileClip('./VideoAnalysis/videos/temp.webm')
+        audio = AudioFileClip(fileaddress)
         audio.write_audiofile('temp.wav')
         choice = int(request.POST['question-id'])
         res={}

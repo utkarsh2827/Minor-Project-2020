@@ -4,7 +4,8 @@ const componentsStyle = {
   container,
   brand: {
     color: "#FFFFFF",
-    textAlign: "left"
+    textAlign: "left",
+    width: 1000,
   },
   title: {
     fontSize: "4.2rem",

@@ -100,6 +100,7 @@ export default function EditorPage(props){
             />
             
             <CssBaseline />
+            <br/><br/><br/>
             <div>
                 <Container fullWidth  component = {Paper}>
                     <h2>{questionName}</h2>
@@ -151,8 +152,8 @@ export default function EditorPage(props){
                         <TextField
                             label="Input"
                             fullWidth
-                            multiLine
-                            rows = {1}
+                            multiline
+                            rowsMax={100}
                             variant = "outlined"
                             onChange={(e)=>{setForm({...form, input_value: e.target.value });}}
                         />

@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-import Button from "@material-ui/core/Button"
+
 import Header from "../components/Header/Header.js";
 import Parallax from "../components/Parallax/Parallax.js";
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 import { container, title } from "../assets/jss/material-kit-react.js";
 import styles from "../assets/jss/material-kit-react/views/components.js";
@@ -90,20 +91,19 @@ export default function HomePage(props) {
                   Prepare and Excel your Interviews with Us!
                 </h3>
               </div>
-                
+              <br /><br />
+              <Button
+                  style= {{backgroundColor:"#066282", color:"white", height:"50px", width:"200px"}}
+                  size="lg"
+                  variant="contained"
+                  rel="noopener noreferrer"
+              >
+                  <Link to="/login-page" style= {{color:"white"}}>Get Started</Link>
+              </Button>
             </Grid>
           </Grid>
         </div>
       </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <Grid item md={12} className={classes.textCenter}>
-          <Link to={"/login-page"} className={classes.link}>
-            <Button color="primary" size="lg" simple>
-              View Login Page
-            </Button>
-          </Link>
-        </Grid>
-      </div>
     </div>
   );
 }

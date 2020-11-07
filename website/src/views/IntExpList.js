@@ -120,8 +120,6 @@ export default function IntExpList(props){
                                 style= {{backgroundColor:"#f44336", color:"white"}}
                                 size="lg"
                                 variant="contained"
-                                href="/form"
-                                target="_blank"
                                 rel="noopener noreferrer"
                                 startIcon={<AddIcon />}
                             >
