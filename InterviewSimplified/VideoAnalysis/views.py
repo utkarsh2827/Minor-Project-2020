@@ -36,7 +36,7 @@ class VideoProcessing(APIView):
         video.write_videofile('c1.mp4')
         audio = AudioFileClip('./VideoAnalysis/videos/temp.webm')
         audio.write_audiofile('temp.wav')
-        choice = request.POST['question-id']
+        choice = int(request.POST['question-id'])
         res={}
         
         generate_text('temp.wav')

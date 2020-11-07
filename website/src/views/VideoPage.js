@@ -42,7 +42,7 @@ const options = {
     enableTooltip: true,
     deterministic: false,
     fontFamily: "impact",
-    fontSizes: [5, 60],
+    fontSizes: [10, 60],
     fontStyle: "normal",
     fontWeight: "normal",
     padding: 1,
@@ -131,7 +131,6 @@ export default function VideoPage(props){
                 brand="Interviews Simplified"
                 rightLinks={<HeaderLinks />}
                 color="dark"
-                fixed
                 {...rest}
             />
             <br/><br/><br/>
@@ -181,7 +180,7 @@ export default function VideoPage(props){
                         Most Frequent Words
                     </Typography>
                     <br/><br/>
-                    <HorizontalBar data = {videoSummary.barchart}/>
+                    <HorizontalBar data = {{...videoSummary.barchart, scaleOverride : true, scaleStartValue : 0 }}/>
                 </div>
                 <div className={classes.section}>
                     <Typography variant="h5" className={classes.stitle} gutterBottom>

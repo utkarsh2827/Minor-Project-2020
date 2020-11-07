@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from User import views
+from knox import views as knox_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('',include('VideoAnalysis.urls')),
     path('',include('InterviewExperience.urls')),
     path('api/user/login',views.LoginAPI.as_view(), name = "login"),
+    path('logout/',knox_views.LogoutView.as_view(), name='knox_logout'),
 ]
