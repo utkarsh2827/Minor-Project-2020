@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from '@material-ui/icons/Add';
 import { container, title } from "../assets/jss/material-kit-react.js";
 import SearchBar from "../components/SearchBar";
+import image from "../assets/img/landing-bg.jpeg";
 const styles = {
     container: {
       zIndex: "12",
@@ -106,7 +107,7 @@ export default function IntExpList(props){
                 }}
                 {...rest}
             />
-            <Parallax filter image={require("../assets/img/landing-bg.jpeg")}>
+            <Parallax filter image={image}>
                 <div className={classes.container}>
                     <Grid className={classes.grid} container>
                         <Grid item className={classes.griditem} xs={12} sm={12} md={6}>

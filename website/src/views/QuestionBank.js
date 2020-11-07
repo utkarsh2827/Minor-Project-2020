@@ -16,6 +16,8 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Parallax from '../components/Parallax/Parallax';
 import axios from "axios";
+import image from "../assets/img/questions.jpeg";
+
 const styles = {
     container: {
       zIndex: "12",
@@ -146,7 +148,7 @@ export default function EditorPage(props){
                 }}
                 {...rest}
             />
-            <Parallax filter image={require("../assets/img/questions.jpeg")}>
+            <Parallax filter image={image}>
                 <div className={classes.container}>
                     <Grid className={classes.grid} container>
                         <Grid item className={classes.griditem} xs={12} sm={12} md={6}>

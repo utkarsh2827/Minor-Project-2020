@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 import { container, title } from "../assets/jss/material-kit-react.js";
 import styles from "../assets/jss/material-kit-react/views/components.js";
-
+import image from '../assets/img/home.jpg';
 const styles2={
   ...styles,
   container: {
@@ -81,7 +81,7 @@ export default function HomePage(props) {
         }}
         {...rest}
       />
-      <Parallax filter image={require("../assets/img/home.jpg")}>
+      <Parallax filter image={image}>
         <div className={classes.container}>
           <Grid className={classes.grid} container>
             <Grid item className={classes.griditem} xs={12} sm={12} md={4}>
