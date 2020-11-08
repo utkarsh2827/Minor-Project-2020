@@ -25,6 +25,7 @@ class SaveExperience(APIView):
         formData['form_data'] = {'roundInfo':data['roundInfo']}
         serializer = ExperienceSerializer(data = formData)
         if serializer.is_valid():
+            print("Saving")
             serializer.save(user = request.user)
             return Response({"message":"Success!"})
         return Response({"message":"Failed!"})
