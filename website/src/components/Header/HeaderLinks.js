@@ -70,10 +70,7 @@ export default function HeaderLinks(props) {
     else{
       setList ([
         <Link to="/login-page" key = {1} className={classes.dropdownLink} >
-          Log In
-        </Link>,
-        <Link to="/signup" key = {2} className={classes.dropdownLink} >
-          Sign Up
+          Log In/ Sign Up
         </Link>
       ]);
     }
