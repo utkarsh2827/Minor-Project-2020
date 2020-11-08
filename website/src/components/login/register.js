@@ -45,7 +45,11 @@ export class Register extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="gender">Gender</label>
-              <input defaultValue={this.details.gender} type="text" name="gender" onChange={this.onChange} placeholder="Gender" />
+              <select id="gender" name="gender" defaultValue={this.details.gender} onChange={this.onChange}>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="O">Other</option>
+              </select>
             </div>
             <div className="form-group">
               <label htmlFor="branch">Branch</label>
