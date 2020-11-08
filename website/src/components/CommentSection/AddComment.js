@@ -1,25 +1,21 @@
 import React, {useState} from 'react';
 
 const AddComment = (props) =>{
-    const [term,setTerm] =  useState('')
-
-    const onFormSubmit=(event)=>{
-    event.preventDefault();
-    props.onSubmit(term);
-    }
- 
+    
+    
     return (
     <div className="ui segment" >
         <form className="ui form">
             <div className="field">
                 <input type="text"
                 placeholder="Add comment" 
-                value={term}
-                onChange={(e)=> setTerm(e.target.value)}
+                name = "comment_text"
+                value={props.newComment}
+                onChange={props.onChange}
                 />
             </div>
             <button className="btn" 
-            onClick= {(event)=>onFormSubmit(event)}> 
+            onClick= {props.onSubmit}> 
             Add Comment
             </button>
         </form>

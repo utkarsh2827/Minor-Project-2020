@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Header from "../components/Header/Header.js";
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 import NavPills from "../components/NavPills/NavPills";
-
+import faker from 'faker';
 import { makeStyles } from '@material-ui/core/styles';
 import { container, title } from "../assets/jss/material-kit-react.js";
 import axios from "axios";
@@ -13,8 +13,9 @@ import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import CommentIcon from '@material-ui/icons/Comment';
-
-
+import CommentDetail from '../components/CommentSection/CommentDetail.js';
+import AddComment  from '../components/CommentSection/AddComment.js';
+import {useAuth} from '../auth.js';
 import image from "../assets/img/bg7.jpg";
 
 
@@ -71,6 +72,9 @@ export default function IntExp(props){
     const [tabs, setTabs] = useState([]);
     const {id} = useParams();
     const classes = useStyles();
+    const { authTokens, setAuthTokens } = useAuth();
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState('');
     const createTabs = ()=>{
         var list =[];
         list.push({tabButton:"Basic Information", tabIcon: CollectionsBookmarkIcon, tabContent: (
@@ -136,10 +140,57 @@ export default function IntExp(props){
             console.log(err);
         })
     }
-    
+    const fetchComments = ()=>{
+        axios.get('/api/comments/',{
+            params:{
+                id:id,
+            }
+        })
+        .then(res=>{
+            let list = res.data;
+            console.log(res.data);
+            list = renderComments(list);
+            setComments(list);
+
+            console.log(comments);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+    const renderComments = (arr)=>{
+        console.log('I was called');
+        return arr.map((obj,index)=>{
+            return(<CommentDetail key = {index} img = {faker.image.avatar()} author = {obj.user} timeago={obj.datetime} msg = {obj.text} />);
+        });
+    };
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        if(!authTokens || !authTokens.token || authTokens.token ===''){
+            alert("You need to be Logged In to Comment");
+        }
+        let config = {
+            headers: {
+                'Authorization':'',
+            }
+        };
+        let token = authTokens.token;
+        if (token) {
+            config.headers['Authorization'] = `Token ${token}`;
+        }
+        axios.post('/api/comment/add/', {'id':id, 'comment_text':newComment}, config)
+        .then(res=>{
+            fetchComments();
+        })
+        .catch(err=>{console.log(err)});
+    }
+    const handleChange=(event)=>{
+        setNewComment(event.target.value);
+    }
     const {...rest} = props;
     useEffect(()=>{
         fetchExp();
+        fetchComments();
     }, []);
     useEffect(()=>{
         createTabs();
@@ -189,6 +240,18 @@ export default function IntExp(props){
                                 />
                             </Grid>
                         </Grid>
+                    </div>
+                    <div style={{padding:"70px 0"}}>
+                        <Grid container display="flex" justify="center">
+                            <Grid item xs={12} sm={12} md={12} style={{textAlign:'center'}}>
+                                <h2 className={classes.stitle}>Comments</h2>
+                                <hr/><br/><br/>
+                            </Grid>
+                        </Grid>
+                        <div style={{color:"black"}}>
+                            {comments}
+                            <AddComment newComment = {newComment} onChange = {handleChange} onSubmit = {handleSubmit}/>
+                        </div> 
                     </div>
                 </div>
             </div>

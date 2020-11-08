@@ -6,7 +6,7 @@ import HeaderLinks from "../components/Header/HeaderLinks.js";
 import BasicInfoForm from "../components/Forms/BasicInfoForm";
 import RoundForm from "../components/Forms/RoundForm";
 
-
+import {useAuth} from '../auth.js';
 
 import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box';
@@ -26,6 +26,8 @@ export default function IntExpForm(props){
         years_of_experience:0,
         additional_info:''
     });
+    const {authTokens, setAuthTokens} = useAuth();
+
     const [form, setForm] = useState([[{question:'', link:'NA', answer:'NA'}]]);
     const handleBasicChange = (event)=>{
         setBasicForm({...basicForm, [event.target.name]:event.target.value});
@@ -71,8 +73,12 @@ export default function IntExpForm(props){
                 'Content-Type':'application/json',
             }
         }
+        let token = authTokens.token;
+        if (token) {
+            config.headers['Authorization'] = `Token ${token}`;
+        }
         const body = {'basicInfo':basicForm, 'roundInfo':form}
-        axios.post('http://localhost:8000/api/exp/',body, config )
+        axios.post('/api/exp/',body, config )
         .then(res => {
             console.log(res.data);
             window.location.replace("/experience-list");

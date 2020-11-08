@@ -97,7 +97,7 @@ export default function VideoPage(props){
                 speaking_rate:res.data.speaking_rate,
                 question:res.data.question,
                 sug_answer:res.data.sug_answer,
-                ans:res.data.ans
+                ans:res.data.text
             });
             setState(true);
         })

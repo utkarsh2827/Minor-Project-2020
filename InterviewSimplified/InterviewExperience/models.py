@@ -29,3 +29,7 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     experience = models.ForeignKey(Experience, on_delete = models.CASCADE)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
+
+    @property
+    def date_time(self):
+        return self.date_added.strftime('%d-%m-%Y at %H-%M')
