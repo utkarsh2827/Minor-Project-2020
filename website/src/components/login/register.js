@@ -1,14 +1,22 @@
 import React from "react";
 import loginImg from "../../login.svg";
-
+import PropTypes from 'prop-types';
 export class Register extends React.Component {
+  static propTypes ={
+    handleRegister: PropTypes.func,
+    handleRegisterChange: PropTypes.func,
+    registerDetails:PropTypes.object,
+  }
   constructor(props) {
     super(props);
+    this.onChange = props.handleRegisterChange.bind(this);
+    this.onSubmit = props.handleRegister.bind(this);
+    this.details = props.registerDetails;
   }
 
   render() {
     return (
-      <div className="base-container" ref={this.props.containerRef}>
+      <div className="base-container" ref={this.props.containerRef} style={{height:"500px", overflowY:"auto"}}>
         <div className="header">Register</div>
         <div className="content">
           <div className="image">
@@ -17,48 +25,60 @@ export class Register extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" />
+              <input defaultValue={this.details.username} type="text" name="username" onChange={this.onChange} placeholder="Username" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="username">Password</label>
+              <input defaultValue={this.details.password} type="password" name="password" onChange={this.onChange} placeholder="Password" />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="Email" />
+              <input defaultValue={this.details.email} type="text" name="email" onChange={this.onChange} placeholder="Email" />
             </div>
             <div className="form-group">
               <label htmlFor="firstname">First Name</label>
-              <input type="text" name="firstname" placeholder="First Name" />
+              <input defaultValue={this.details.firstname} type="text" name="firstname" onChange={this.onChange} placeholder="First Name" />
             </div>
             <div className="form-group">
               <label htmlFor="lastname">Last Name</label>
-              <input type="text" name="lastname" placeholder="Last Name" />
+              <input defaultValue={this.details.lastname} type="text" name="lastname" onChange={this.onChange} placeholder="Last Name" />
             </div>
             <div className="form-group">
               <label htmlFor="gender">Gender</label>
+<<<<<<< HEAD
               <select id="gender" name="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
+=======
+              <input defaultValue={this.details.gender} type="text" name="gender" onChange={this.onChange} placeholder="Gender" />
+>>>>>>> 47889e20f0ca08ab1b74a84969bf2e0ba30a2662
             </div>
             <div className="form-group">
               <label htmlFor="branch">Branch</label>
-              <input type="text" name="branch" placeholder="Branch" />
+              <input defaultValue={this.details.branch} type="text" name="branch" onChange={this.onChange} placeholder="Branch" />
             </div>
             <div className="form-group">
               <label htmlFor="city">City</label>
-              <input type="text" name="city" placeholder="City" />
+              <input defaultValue={this.details.city} type="text" name="city" onChange={this.onChange} placeholder="City" />
             </div>
             <div className="form-group">
               <label htmlFor="cgpa">Cgpa</label>
-              <input type="text" name="cgpa" placeholder="CGPA" />
+              <input defaultValue={this.details.cgpa} type="text" name="cgpa" onChange={this.onChange} placeholder="CGPA" />
             </div>
             <div className="form-group">
               <label htmlFor="work_experience">Work Experience</label>
-              <input type="text" name="work_experience" placeholder="Work Experience" />
+              <input defaultValue={this.details.work_experience} type="number" name="work_experience" onChange={this.onChange} placeholder="Work Experience" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="graduation_year">Graduation Year</label>
+              <input defaultValue={this.details.graduation_year} type="number" name="graduation_year" onChange={this.onChange} placeholder="Graduation Year" />
             </div>
           </div>
         </div>
         <div className="footer">
-          <button type="button" className="btn">
+          <button type="button" onClick={this.onSubmit} className="btn">
             Register
           </button>
         </div>
