@@ -161,13 +161,14 @@ export default function IntExp(props){
     const renderComments = (arr)=>{
         console.log('I was called');
         return arr.map((obj,index)=>{
-            return(<CommentDetail key = {index} img = {faker.image.avatar()} author = {obj.user} timeago={obj.datetime} msg = {obj.text} />);
+            return(<CommentDetail key = {index} img = {faker.image.avatar()} author = {obj.user} timeago={obj.date_time} msg = {obj.text} />);
         });
     };
     const handleSubmit = (event)=>{
         event.preventDefault();
         if(!authTokens || !authTokens.token || authTokens.token ===''){
             alert("You need to be Logged In to Comment");
+            return;
         }
         let config = {
             headers: {

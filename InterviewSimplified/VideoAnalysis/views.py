@@ -85,7 +85,28 @@ class VideoProcessing(APIView):
 #         return JsonResponse(dict(question = questions[choice]['Question'], id = choice))
 
     
+class VideoReportList(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    def get(self,request, format = 'json'):
+        l = Analysis.objects.filter(user = request.user)
+        res = []
+        for x in l:
+            temp = dict(date_added = x.date_added.strftime("%d-%m-%Y"), id = x.id)
+            res.append(temp)
+        return Response(res)
 
+class VideoDetailAPI(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    def get(self, request, format='json'):
+        report_id = request.GET.get('id')
+        report = Analysis.objects.get(user = request.user, id = report_id)
+        return Response(report.report)
 
 
     

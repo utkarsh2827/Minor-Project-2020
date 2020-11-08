@@ -15,8 +15,8 @@ import VideoPage from "./views/VideoPage";
 import IntExpForm from './views/IntExpForm';
 import IntExpList from "./views/IntExpList";
 import IntExp from "./views/IntExp";
-
-
+import ProfilePage from './views/ProfilePage';
+import VideoSummaryPage from './views/VideoSummaryPage';
 
 function App() {
   const existingTokens = JSON.parse(localStorage.getItem("token")) || {};
@@ -39,6 +39,8 @@ function App() {
           <PublicRoute path="/questions" component={QuestionBank} />
           <ProtectedRoute path="/video" component={VideoPage} /> 
           <ProtectedRoute path="/form" component={IntExpForm} /> 
+          <ProtectedRoute path="/profile" component={ProfilePage} /> 
+          <ProtectedRoute path="/video-summary/:id" component={VideoSummaryPage} /> 
           <PublicRoute path="/experience-list" component={IntExpList} /> 
           <PublicRoute path="/experience/:id" component={IntExp}/> 
           <PublicRoute path="/" component={HomePage} />

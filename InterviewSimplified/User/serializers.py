@@ -18,6 +18,7 @@ class LoginSerializer(serializers.Serializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     gender = serializers.CharField(source='get_gender_display')
+    user = UserSerializer()
     class Meta:
         model = Profile
-        exclude = ['user']
+        exclude = ['id']
