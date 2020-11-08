@@ -35,18 +35,35 @@ const styles = {
 const options = {
     colors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"],
     enableTooltip: true,
-    deterministic: false,
+    deterministic: true,
     fontFamily: "impact",
-    fontSizes: [10, 60],
+    fontSizes: [30, 100],
     fontStyle: "normal",
     fontWeight: "normal",
     padding: 1,
     rotations: 3,
-    rotationAngles: [0, 90],
+    rotationAngles: [0, 70],
     scale: "sqrt",
     spiral: "archimedean",
     transitionDuration: 1000
 };
+const baroptions = {
+    responsive: true,
+    scales: {
+        xAxes: [{
+            ticks: {
+                beginAtZero: true,
+                steps: 10,
+                stepSize: 0.10,
+                }
+            }
+        ],
+    },
+    legend:{
+        display: false,
+    }
+}
+
 const useStyles = makeStyles(styles);
 
 
@@ -129,7 +146,7 @@ export default function VideoPage(props){
                         Most Frequent Words
                     </Typography>
                     <br/><br/>
-                    <HorizontalBar data = {{...videoSummary.barchart, scaleOverride : true, scaleStartValue : 0 }}/>
+                    <HorizontalBar data = {{...videoSummary.barchart}} options={baroptions}/>
                 </div>
                 <div className={classes.section}>
                     <Typography variant="h5" className={classes.stitle} gutterBottom>

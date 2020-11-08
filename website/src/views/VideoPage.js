@@ -13,7 +13,8 @@ import styles2 from "../assets/jss/material-kit-react/views/components.js";
 import { Button, Typography } from '@material-ui/core';
 import axios from "axios";
 import { getSeekableBlob } from "recordrtc";
-
+import Loader from '../components/Loader.js';
+import Backdrop from '@material-ui/core/Backdrop';
 import {Doughnut, HorizontalBar} from 'react-chartjs-2';
 
 
@@ -32,6 +33,10 @@ const styles = {
     },
     sdescription: {
         color: "#999"
+    },
+    backdrop:{
+        zIndex: 4,
+        color: '#fff',
     }
 };
 
@@ -52,6 +57,19 @@ const options = {
     spiral: "archimedean",
     transitionDuration: 1000
 };
+const baroptions = {
+    responsive: true,
+    scales: {
+        xAxes: [{
+            ticks: {
+                beginAtZero: true,
+                steps: 10,
+                stepSize: 0.10,
+                }
+            }
+        ],
+    },
+}
 
 export default function VideoPage(props){
     const [videoSummary, setSummary] = useState({words:[], pie_string:'', barchart:null, speaking_rate:0, question:'', sug_answer:'', ans:''});
@@ -60,6 +78,7 @@ export default function VideoPage(props){
     const { ...rest } = props;
     const [question, setQuestion] = useState({id:0, question:''});
     const [show, setState] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { authTokens, setAuthTokens } = useAuth();
     const postVideo = ()=>{
         if(videoBlob==null){
@@ -71,6 +90,7 @@ export default function VideoPage(props){
         //         'X-CSRFToken': csrftoken,
         //     }
         // };
+        setIsLoading(true);
         let config = {
             headers: {
                 'Authorization':'',
@@ -100,6 +120,7 @@ export default function VideoPage(props){
                 ans:res.data.text
             });
             setState(true);
+            setIsLoading(false);
         })
         .catch((err)=>console.log(err));
     };
@@ -121,6 +142,9 @@ export default function VideoPage(props){
             console.log(err);
         });
     };
+    const handleClose = () => {
+        setIsLoading(false);
+    };
     useEffect(()=>{
         getQuestion();
     }, []);
@@ -133,8 +157,12 @@ export default function VideoPage(props){
                 color="dark"
                 {...rest}
             />
+            
             <br/><br/><br/>
             <div className={classes.container}>
+                <Backdrop className={classes.backdrop} open={isLoading} onClick={handleClose}>
+                    <Loader msg="Loading...."/>
+                </Backdrop>
                 <Typography variant="h4" className={classes.stitle} gutterBottom>
                     Video Interview
                 </Typography>
@@ -146,7 +174,7 @@ export default function VideoPage(props){
                         </Typography>
                     </Grid>
                     <Grid item position="relative" height="100%" z-index={0} xs={12}>
-                        <VideoRecorder min-height="1000px" timeLimit = {120000} onError={(err)=>console.log(err)} onRecordingComplete={(videoBlob)=>{getSeekableBlob(videoBlob,function(fixedBlob){setVideo(fixedBlob)})}}></VideoRecorder>
+                        <VideoRecorder replayVideoAutoplayAndLoopOff={true} min-height="1000px" timeLimit = {120000} onError={(err)=>console.log(err)} onRecordingComplete={(videoBlob)=>{getSeekableBlob(videoBlob,function(fixedBlob){setVideo(fixedBlob)})}}></VideoRecorder>
                     </Grid>
                     <Grid item xs={12}>
                         <Button style={{position:'relative', left:500, backgroundColor:'#7A1C86'}}variant="contained" color="primary" onClick = {postVideo}>Submit Video</Button>
@@ -180,7 +208,7 @@ export default function VideoPage(props){
                         Most Frequent Words
                     </Typography>
                     <br/><br/>
-                    <HorizontalBar data = {{...videoSummary.barchart, scaleOverride : true, scaleStartValue : 0 }}/>
+                    <HorizontalBar data = {{...videoSummary.barchart}} options={baroptions}/>
                 </div>
                 <div className={classes.section}>
                     <Typography variant="h5" className={classes.stitle} gutterBottom>
