@@ -13,7 +13,7 @@ const AddComment = (props) =>{
         <form className="ui form">
             <div className="field">
                 <input type="text"
-                placeholder="Add comment" 
+                placeholder="Add comment"
                 value={term}
                 onChange={(e)=> setTerm(e.target.value)}
                 />
