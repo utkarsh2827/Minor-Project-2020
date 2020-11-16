@@ -8,12 +8,17 @@ https://app.creately.com/diagram/CehrVljnyGb/view
 
 
 ### Instructions:
+For Frontend:
 Install node and npm from https://nodejs.org/en/download/, then follow the below steps:
 1. Go to website directory
 2. Run npm install (One time thing)
 3. Run npm start
 
-Currently, Django and React apps aren't integrated.
+For Backend:
+1. Go to InterviewSimplified directory
+2. Run python manage.py runserver
+
+
 
 React Templates and styling library:
 https://material-ui.com/getting-started/installation/
